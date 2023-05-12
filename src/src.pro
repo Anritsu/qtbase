@@ -71,6 +71,7 @@ src_winmain.depends = sub-corelib  # just for the module .pri file
 src_corelib.subdir = $$PWD/corelib
 src_corelib.target = sub-corelib
 src_corelib.depends = src_tools_moc src_tools_tracegen
+#src_corelib.depends = src_tools_tracegen
 
 src_xml.subdir = $$PWD/xml
 src_xml.target = sub-xml
@@ -158,11 +159,13 @@ src_android.subdir = $$PWD/android
     }
 }
 SUBDIRS += src_tools_bootstrap src_tools_moc src_tools_rcc src_tools_tracegen
+#SUBDIRS += src_tools_bootstrap src_tools_rcc src_tools_tracegen
 qtConfig(regularexpression):!qtConfig(system-pcre2):pcre2 {
     SUBDIRS += src_3rdparty_pcre2
     src_corelib.depends += src_3rdparty_pcre2
 }
 TOOLS = src_tools_moc src_tools_rcc src_tools_tracegen src_tools_qlalr
+#TOOLS = src_tools_rcc src_tools_tracegen src_tools_qlalr
 SUBDIRS += src_corelib src_tools_qlalr
 win32:SUBDIRS += src_winmain
 qtConfig(network) {
@@ -275,6 +278,7 @@ qtConfig(private_tests) {
 
 TR_EXCLUDE = \
     src_tools_bootstrap src_tools_moc src_tools_rcc src_tools_uic src_tools_qlalr \
+#    src_tools_bootstrap src_tools_rcc src_tools_uic src_tools_qlalr \
     src_tools_bootstrap_dbus src_tools_qdbusxml2cpp src_tools_qdbuscpp2xml \
     src_3rdparty_pcre2 src_3rdparty_harfbuzzng src_3rdparty_freetype \
     src_tools_tracegen
