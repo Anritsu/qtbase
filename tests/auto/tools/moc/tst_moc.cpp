@@ -630,7 +630,7 @@ public:
 private slots:
     void initTestCase();
 
-    void slotWithException() throw(MyStruct);
+    void slotWithException() /* throw(MyStruct) */;
     void dontStripNamespaces();
     void oldStyleCasts();
     void warnOnExtraSignalSlotQualifiaction();
@@ -782,7 +782,7 @@ void tst_Moc::initTestCase()
 #endif
 }
 
-void tst_Moc::slotWithException() throw(MyStruct)
+void tst_Moc::slotWithException() /* throw(MyStruct) */
 {
     // be happy
     QVERIFY(true);
@@ -1593,7 +1593,7 @@ void tst_Moc::qprivateproperties()
 
 #include "task189996.h"
 
-void InlineSlotsWithThrowDeclaration::c() throw() {}
+void InlineSlotsWithThrowDeclaration::c() /* throw() */ {}
 
 void tst_Moc::inlineSlotsWithThrowDeclaration()
 {
@@ -1776,7 +1776,7 @@ class QTBUG7421_ReturnConstTemplate: public QObject
 public slots:
         const QList<int> returnConstTemplate1() { return QList<int>(); }
         QList<int> const returnConstTemplate2() { return QList<int>(); }
-        const int returnConstInt() { return 0; }
+        /* const */ int returnConstInt() { return 0; }
         const QString returnConstString(const QString s) { return s; }
         QString const returnConstString2( QString const s) { return s; }
 };

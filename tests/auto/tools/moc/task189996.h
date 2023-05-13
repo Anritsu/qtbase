@@ -37,11 +37,11 @@ class InlineSlotsWithThrowDeclaration : public QObject
     Q_OBJECT
 
 public slots:
-    void a() throw() { }
-    void b() const throw() { }
-    void c() throw();
-    void d() throw(int) { }
-    void e() const throw(int,double) { }
+    void a() /* throw() */ { }
+    void b() const /* throw() */ { }
+    void c() /* throw() */;
+    void d() /* throw(int) */ { }
+    void e() const /* throw(int,double) */ { }
 };
 
 #endif
